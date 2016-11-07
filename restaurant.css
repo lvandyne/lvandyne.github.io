@@ -1,0 +1,67 @@
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+header {
+  background: url(images/toms-restaurant.jpg) no-repeat center center fixed;
+  background-size: cover;
+  text-align:center;
+  color:white;
+  height: 600px;
+}
+
+h1.monk {
+  font-family: 'Shadows Into Light Two', cursive;
+  font-size:12em;
+}
+p.monk {
+  font-size: 4em;
+  font-family: 'Shadows Into Light Two', cursive;
+  margin-right: 450px;
+}
+
+.bdr-b {
+  border-bottom: 1px solid #cacaca
+}
+
+h2{
+ color: #0a077a;
+ text-align:center;
+}
+
+.pal {
+  padding:30px;
+}
+.inline-block {
+  display:inline-block;
+}
+
+.divcenter{
+  width:50%;
+  margin: 0 auto;
+}
+
+section{
+  color:#0a077a;
+  width: 50%;
+  padding:30px;
+  margin: 0 auto;
+}
+
+blockquote {
+  color:#e42433;
+  margin-left: 50px;
+  font-size:2em;
+  margin-top: 10px;
+}
+blockquote span {
+  font-size:0.65em;
+}
+
+.image-p-pair {
+  display: table-row;
+}
+
+.image-p-pair .image, .image-p-pair .p {
+  display: table-cell;
+  vertical-align: top;
+}
