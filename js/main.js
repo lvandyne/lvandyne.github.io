@@ -82,11 +82,13 @@ getReservations();
 
 $('tbody').on('click', 'td i.delete', function (e) {
   // Get the ID for the comment we want to update
+  var enteredPin = prompt('Please enter your pin');
   var id = $(e.target).parent().parent().data('id');
-  // find comment whose objectId is equal to the id we're searching with
-  var reservationReference = database.ref('reservation/' + id)
+  var pin = $(e.target).parent().data('id');
+  if(pin == enteredPin){
   // Use remove method to remove the comment from the database
   reservationReference.remove()
+  }
 });
 
 var week = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"]
