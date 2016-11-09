@@ -23,7 +23,7 @@ p.monk {
   border-bottom: 1px solid #cacaca
 }
 
-h2{
+h2, h3{
  color: #0a077a;
  text-align:center;
 }
@@ -41,8 +41,17 @@ h2{
   background-color: grey;
 }
 
+th {
+  color:#fff;
+  background-color:#0a077a;
+}
+td {
+  border: 1px solid #cacaca;
+  border-collapse:collapse;
+  text-transform:capitalize;
+}
 .divcenter{
-  width:50%;
+  width:75%;
   margin: 0 auto;
 }
 
