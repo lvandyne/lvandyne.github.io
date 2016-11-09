@@ -28,19 +28,24 @@ $('#makeReservation').on('submit', function (e) {
   // grab user's comment from input field
   var userName = $('#name').val();
   var userDay = $('#day').val();
+  var userPin = $('#pin').val();
 
-  if (userName === "" || userDay === ""){
+  if (userName === "" || userDay === "" || userPin === ""){
     $('#error').html('*All fields are required.')
+  } else if (userPin.length != 4) {
+    $('#error').html('*Please make sure your pin is 4 digits.')
   } else {
     // clear the user's comment from the input (for UX purposes)
-    $('#name').val('')
+    $('#name').val('');
     $('#day').val('');
+    $('#pin').val('');
     // create a section for comments data in your db
     var reservationReference = database.ref('reservation');
     // use the set method to save data to the comments
     reservationReference.push({
       name: userName,
-      day: userDay
+      day: userDay,
+      pin: userPin
     });
   }
 });
@@ -53,6 +58,7 @@ function getReservations (){
       var context = {
         name: allReservations[item].name,
         day: allReservations[item].day,
+        pin: allReservations[item].pin,
         reservationId: item
       };
       // Get the HTML from our Handlebars comment template
@@ -65,7 +71,7 @@ function getReservations (){
       reservationsMade.push(reservationRowElement)
     }
     // remove all list items from DOM before appending list items
-    $('.existingReservations').empty()
+    $('#existingReservations tbody td').remove()
     // append each comment to the list of comments in the DOM
     for (var i in reservationsMade) {
       $('#existingReservations tbody').append(reservationsMade[i])
@@ -73,3 +79,27 @@ function getReservations (){
   });
 }
 getReservations();
+
+$('tbody').on('click', 'td i.delete', function (e) {
+  // Get the ID for the comment we want to update
+  var id = $(e.target).parent().parent().data('id');
+  // find comment whose objectId is equal to the id we're searching with
+  var reservationReference = database.ref('reservation/' + id)
+  // Use remove method to remove the comment from the database
+  reservationReference.remove()
+});
+
+var week = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"]
+function checkHours () {
+  var d = new Date();
+  var a = d.getDay();
+  var h = d.getHours();
+  var today = week[a];
+  $('#'+today).css('background-color', '#ec5840').css('color', 'white').next().css('background-color', '#ec5840').css('color', 'white');
+  if (h > 8 && h < 22){
+    $('#openClose').html('We are currently open!');
+  } else {
+    $('#openClose').html('See you in the morning!');
+  }
+}
+checkHours();

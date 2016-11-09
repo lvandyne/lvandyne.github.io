@@ -5,6 +5,7 @@
       <title>Lindsay's JSC Final Project</title>
       <link rel="stylesheet" type="text/css" href="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css">
       <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
       <link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light+Two" rel="stylesheet">
       <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
       <link rel="stylesheet" type="text/css" href="restaurant.css">
@@ -21,6 +22,7 @@
           <form id="makeReservation" style="width:80%;" class="divcenter">
               <input id="name" type="text" placeholder="Name">
               <input id="day" type="text" placeholder="Day">
+              <input id="pin" type="text" placeholder="Please create a 4 digit pin">
               <button type="submit" class="button alert">Confirm Reservation</button>
               <p id="error"></p>
           </form>
@@ -36,17 +38,51 @@
               <script id="reservation-template" type="text/x-handlebars-template">
                 <tr data-id="{{reservationId}}">
                   <td>{{name}}</td>
-                  <td>{{day}}</td>
+                  <td>{{day}} <i class="fa fa-trash-o delete" style="float:right;"></i></td>
                 </tr>
               </script>
             </tbody>
           </table>
         </div>
       </div>
-      <h2 class="pal">Come Dine with Us</h2>
-      <div id="map"></div>
-      <h2 class="pal">Customer Reviews</h2>
-      <div class="divcenter">
+      <h2 class="pal bdr-b">Come Dine with Us</h2>
+      <div class="row pal">
+        <div class="medium-6 columns">
+          <h3>Hours</h3>
+          <table id="hours" class="divcenter pal" style="border:none;">
+            <tbody>
+              <tr>
+                <td id="monday">Monday:</td><td>8AM - 10PM</td>
+              </tr>
+              <tr>
+                <td id="tuesday">Tuesday:</td><td>8AM - 10PM</td>
+              </tr>
+              <tr>
+                <td id="wednesday">Wednesday:</td><td>8AM - 10PM</td>
+              </tr>
+              <tr>
+                <td id="thursday">Thursday:</td><td>8AM - 10PM</td>
+              </tr>
+              <tr>
+                <td id="friday">Friday</td><td>8AM - 10PM</td>
+              </tr>
+              <tr>
+                <td id="saturday">Saturday:</td><td>8AM - 11PM</td>
+              </tr>
+              <tr>
+                <td id="sunday">Sunday:</td><td>10AM - 7PM</td>
+              </tr>
+            </tbody>
+          </table>
+          <p id="openClose"></p>
+        </div>
+        <div class="medium-6 columns">
+          <h3>Location</h3>
+          <div id="map" class="dicenter"></div>
+        </div>
+      </div>
+      <h2 class="pal bdr-b">Customer Reviews</h2>
+      <div class="divcenter pal">
         <div id="customerReviews" class="image-p-pair">
           <figure class="image">
             <img src="images/jerry.png" style="max-width:none;">

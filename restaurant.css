@@ -40,7 +40,12 @@ h2, h3{
   height: 400px;
   background-color: grey;
 }
-
+#openClose{
+  text-align: center;
+  padding:30px;
+  font-size:2em;
+  color:#5c9a42;
+}
 th {
   color:#fff;
   background-color:#0a077a;
