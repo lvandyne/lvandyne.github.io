@@ -21,6 +21,8 @@ var config = {
 };
 firebase.initializeApp(config);
 var database = firebase.database();
+// Move this line so that we can reference this database elsewhere
+var reservationReference = database.ref('reservation');
 
 $('#makeReservation').on('submit', function (e) {
   // prevent the page from reloading
@@ -39,8 +41,6 @@ $('#makeReservation').on('submit', function (e) {
     $('#name').val('');
     $('#day').val('');
     $('#pin').val('');
-    // create a section for comments data in your db
-    var reservationReference = database.ref('reservation');
     // use the set method to save data to the comments
     reservationReference.push({
       name: userName,
@@ -87,7 +87,10 @@ $('tbody').on('click', 'td i.delete', function (e) {
   var pin = $(e.target).parent().data('id');
   if(pin == enteredPin){
   // Use remove method to remove the comment from the database
-  reservationReference.remove()
+		// using the "remove" method this way will remove all data in your database
+		//reservationReference.remove()
+		// use the "child" method to select the actual data that you want to remove
+		reservationReference.child(id).remove();
   }
 });
 
